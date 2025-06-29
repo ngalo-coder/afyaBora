@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image } from 'react-native';
+import { useRouter } from 'expo-router'; // Import useRouter
 import { Header } from '@/components/ui/Header';
 import { Card } from '@/components/ui/Card';
 import { StatCard } from '@/components/ui/StatCard';
 import { Heart, Activity, Users, Calendar, DollarSign, Package, TrendingUp, TrendingDown, TriangleAlert as AlertTriangle, CircleCheck as CheckCircle, Clock, FileText } from 'lucide-react-native';
 
 export default function Dashboard() {
+  const router = useRouter(); // Initialize router
   const [selectedPeriod, setSelectedPeriod] = useState('Today');
   const periods = ['Today', 'Week', 'Month', 'Year'];
 
@@ -291,7 +293,10 @@ export default function Dashboard() {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Quick Actions</Text>
           <View style={styles.quickActionsGrid}>
-            <TouchableOpacity style={styles.quickActionCard}>
+            <TouchableOpacity
+              style={styles.quickActionCard}
+              onPress={() => router.push('/add-patient')} // Navigate to AddPatientScreen
+            >
               <View style={[styles.quickActionIcon, { backgroundColor: '#2563EB15' }]}>
                 <Users size={24} color="#2563EB" />
               </View>
