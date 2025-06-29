@@ -364,11 +364,13 @@ class ERPNextService {
   }
 }
 
+import { ERPNEXT_URL, ERPNEXT_API_KEY, ERPNEXT_API_SECRET } from '../config';
+
 // Export singleton instance with proper error handling
 export const erpNextService = new ERPNextService({
-  baseUrl: process.env.EXPO_PUBLIC_ERPNEXT_URL || 'https://demo.erpnext.com',
-  apiKey: process.env.EXPO_PUBLIC_ERPNEXT_API_KEY || 'demo_api_key',
-  apiSecret: process.env.EXPO_PUBLIC_ERPNEXT_API_SECRET || 'demo_api_secret'
+  baseUrl: ERPNEXT_URL || 'https://demo.erpnext.com',
+  apiKey: ERPNEXT_API_KEY || 'demo_api_key',
+  apiSecret: ERPNEXT_API_SECRET || 'demo_api_secret'
 });
 
 export default ERPNextService;
